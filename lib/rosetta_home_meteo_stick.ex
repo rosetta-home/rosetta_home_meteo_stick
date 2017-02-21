@@ -80,7 +80,7 @@ defmodule DeviceManager.Discovery.WeatherStation.MeteoStick do
     {:ok, []}
   end
 
-  def handle_info(device, state) do
+  def handle_info({:meteo_stick, device}, state) do
     {:noreply, handle_device(device, WeatherStation.MeteoStick, state)}
   end
 
