@@ -14,7 +14,7 @@ defmodule DeviceManager.Device.WeatherStation.MeteoStick do
 
   def device(pid) do
     GenServer.call(pid, :device)
-  enda
+  end
 
   def update_state(pid, state) do
     GenServer.call(pid, {:update, state})
