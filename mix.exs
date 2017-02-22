@@ -10,27 +10,14 @@ defmodule RosettaHomeMeteoStick.Mixfile do
      deps: deps()]
   end
 
-  # Configuration for the OTP application
-  #
-  # Type "mix help compile.app" for more information
   def application do
-    # Specify extra applications you'll use from Erlang/Elixir
-    [extra_applications: [:logger, :meteo_stick]]
+    [extra_applications: [:logger, :meteo_stick, :cicada]]
   end
 
-  # Dependencies can be Hex packages:
-  #
-  #   {:my_dep, "~> 0.3.0"}
-  #
-  # Or git/path repositories:
-  #
-  #   {:my_dep, git: "https://github.com/elixir-lang/my_dep.git", tag: "0.1.0"}
-  #
-  # Type "mix help deps" for more examples and options
   defp deps do
     [
       {:meteo_stick, "~> 0.2.2"},
-      {:cicada, github: "rosetta-home/cicada", branch: "dependency"}
+      {:cicada, github: "rosetta-home/cicada", optional: true}
     ]
   end
 end

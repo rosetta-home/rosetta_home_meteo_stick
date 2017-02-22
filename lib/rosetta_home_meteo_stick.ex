@@ -1,8 +1,8 @@
-defmodule DeviceManager.Device.WeatherStation.MeteoStick do
+defmodule Cicada.DeviceManager.Device.WeatherStation.MeteoStick do
   use GenServer
   require Logger
-
-  @behaviour DeviceManager.Behaviour.WeatherStation
+  alias Cicada.{DeviceManager}
+  @behaviour Cicada.DeviceManager.Behaviour.WeatherStation
 
   def start_link(id, device) do
     GenServer.start_link(__MODULE__, {id, device}, name: id)
@@ -54,10 +54,10 @@ defmodule DeviceManager.Device.WeatherStation.MeteoStick do
 
 end
 
-defmodule DeviceManager.Discovery.WeatherStation.MeteoStick do
-  use DeviceManager.Discovery
+defmodule Cicada.DeviceManager.Discovery.WeatherStation.MeteoStick do
+  use Cicada.DeviceManager.Discovery
   require Logger
-  alias DeviceManager.Device.WeatherStation
+  alias Cicada.DeviceManager.Device.WeatherStation
 
   defmodule EventHandler do
     use GenEvent
