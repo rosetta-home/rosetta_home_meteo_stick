@@ -77,11 +77,11 @@ defmodule Cicada.DeviceManager.Discovery.WeatherStation.MeteoStick do
   def register_callbacks do
     Logger.info "Starting MeteoStick Listener"
     MeteoStick.EventManager.add_handler(EventHandler)
-    {:ok, []}
+    WeatherStation.MeteoStick
   end
 
   def handle_info({:meteo_stick, device}, state) do
-    {:noreply, handle_device(device, WeatherStation.MeteoStick, state)}
+    {:noreply, handle_device(device, state)}
   end
 
 end
