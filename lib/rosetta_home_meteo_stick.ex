@@ -55,9 +55,9 @@ defmodule Cicada.DeviceManager.Device.WeatherStation.MeteoStick do
 end
 
 defmodule Cicada.DeviceManager.Discovery.WeatherStation.MeteoStick do
-  use Cicada.DeviceManager.Discovery
   require Logger
   alias Cicada.DeviceManager.Device.WeatherStation
+  use Cicada.DeviceManager.Discovery, module: WeatherStation.MeteoStick
 
   defmodule EventHandler do
     use GenEvent
@@ -77,7 +77,7 @@ defmodule Cicada.DeviceManager.Discovery.WeatherStation.MeteoStick do
   def register_callbacks do
     Logger.info "Starting MeteoStick Listener"
     MeteoStick.EventManager.add_handler(EventHandler)
-    WeatherStation.MeteoStick
+    %{}
   end
 
   def handle_info({:meteo_stick, device}, state) do
