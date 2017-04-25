@@ -72,11 +72,16 @@ defmodule Cicada.DeviceManager.Discovery.WeatherStation.MeteoStick do
       {:ok, parent}
     end
 
+    def terminate(reason, parent) do
+      Logger.info "MeteoStick EvenHandler Terminating: #{inspect reason}"
+      :ok
+    end
+
   end
 
   def register_callbacks do
     Logger.info "Starting MeteoStick Listener"
-    MeteoStick.EventManager.add_handler(EventHandler)
+    MeteoStick.Events |> GenEvent.add_mon_handler(EventHandler, self())
     %{}
   end
 
