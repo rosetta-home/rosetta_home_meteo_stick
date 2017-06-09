@@ -36,14 +36,14 @@ defmodule Cicada.DeviceManager.Device.WeatherStation.MeteoStick do
       interface_pid: id,
       name: Atom.to_string(device.id),
       state: device |> map_state,
-      timer: Process.send_after(self(), :no_data, 19_000)
+      timer: Process.send_after(self(), :no_data, 120_000)
     }}
   end
 
   def handle_call({:update, state}, _from, device) do
     device.timer |> Process.cancel_timer
     {:reply, state, %DeviceManager.Device{device |
-      timer: Process.send_after(self(), :no_data, 19_000),
+      timer: Process.send_after(self(), :no_data, 120_000),
       state: state |> map_state
     }}
   end
