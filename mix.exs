@@ -16,7 +16,7 @@ defmodule RosettaHomeMeteoStick.Mixfile do
 
   defp deps do
     [
-      {:meteo_stick, "~> 0.2.4"},
+      {:meteo_stick, "~> 0.2.5"},
       {:cicada, github: "rosetta-home/cicada", optional: true}
     ]
   end
